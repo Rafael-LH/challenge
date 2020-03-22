@@ -1,0 +1,138 @@
+*{
+ padding: 0px;
+ margin: 0px;
+ font-family: Arial, Helvetica, sans-serif;
+ text-decoration: none;
+ list-style: none; 
+
+ --color-btn: rgb(21, 87, 153);
+ --secons-btn: .7s;
+ --color-btn-close: rgb(28, 181, 224);
+}
+.container{
+ max-width: 1090px;
+ margin: auto;
+ display: flex;
+ justify-content: center;
+ flex-wrap: wrap;
+}
+.container__card{
+ margin: 20px;
+ padding: 30px;
+ width: 250px;
+ border-radius: 5px;
+ box-shadow: 0px 1px 5px 0px rgba(0,0,0,0.75);
+ text-align: center;
+}
+.container__card img {
+  width: 150px;
+  border-radius: 50%;
+  margin-bottom: 5px;
+}
+.container__card img, h1, p {
+ margin-bottom: 10px;
+}
+.container__card h1{
+ font-size: 1.5em;
+}
+.container__card--url{
+ margin-top: 20px;
+}
+.btn-show-repo, .btn-commits{
+ font-size: .9em;
+ padding: 5px 10px;
+ border: 1px solid var(--color-btn); 
+ color: var(--color-btn);
+ background: none;
+ border-radius: 5px;
+ cursor: pointer;
+ width: 70%;
+ transition: ease var(--secons-btn);
+}
+
+.btn-show-repo:hover, .btn-commits:hover{
+  background: var(--color-btn);
+  transition: ease var(--secons-btn);
+  color: #fff;
+}
+
+.container-modal{
+ width: 100%;
+ height: 100vh;
+ position: fixed;
+ z-index: 1000;
+ background-color: rgba(0, 0, 0, 0.6);
+ justify-content: center;
+ align-items: center;
+ top: 0;
+ left: 0;
+}
+.container-modal-repos{
+ position: relative;
+ width: 80%;
+ margin: auto;
+ margin-bottom: 50px;
+ height: 100%;
+ overflow-x: auto;
+ display: flex;
+ justify-content: center;
+ flex-wrap: wrap;
+}
+.container-modal-repos__card{
+  margin: 20px;
+  padding: 30px;
+  width: 350px;
+  border-radius: 5px;
+  background-color: #fff;
+  box-shadow: 0px 1px 5px 0px rgba(0,0,0,0.75);
+  text-align: center;
+}
+.container-modal-repos__card h1{
+  padding-bottom: 17px;
+  font-size: 1.2em;
+}
+.container-modal-repos__info{
+ display: flex;
+ justify-content: space-between;
+}
+.btn-close-modal{
+ position: fixed;
+ top: 2%;
+ right: 13%;
+ border-radius: 50%;
+ padding: 2px 8px;
+ cursor: pointer;
+ font-size: 1.2em;
+ background: none;
+ border: 1px solid var(--color-btn-close);
+ color: var(--color-btn-close);
+ font-weight: bold;
+}
+.container-modal-repos__commits{
+ display: flex;
+ justify-content: center;
+ margin-top: 20px;
+}
+.container-modal-repos.content-commits{
+  background-color: #fff;
+  display: block;
+}
+.container-commits{
+  width: 80%;
+  margin: auto;
+  text-align: start;
+  padding: 20px;
+}
+.container-commits__user{
+  display: flex;
+  justify-content: space-between; 
+  margin-bottom: 20px;
+}
+.container-commits__list{
+  padding: 20px 0px 20px;
+  border-bottom: 1px solid #ece6e6;
+}
+.container-commits:nth-child(2) h1{
+  text-align: center;
+  margin-bottom: 20px;
+}
