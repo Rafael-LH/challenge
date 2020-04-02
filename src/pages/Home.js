@@ -1,33 +1,30 @@
-import React, {Component} from 'react'
+import React, {Component, useState, useEffect} from 'react'
 
 import Registers from '../components/Registers'
-import Repositories from '../components/ModalRepositories'
+const Home = () => {
+  const [users, setUsers] = useState([])
 
+  useEffect( () => {
+    async function fetchData(){
+      try {
 
-export default class Home extends Component{
+        const response = await fetch(`/users`);
+        const { data } = await response.json()
+        setUsers(data)
 
-  constructor(props){
-    super(props)
-    this.state = {
-        data: []
+      } catch (error) {
+        console.log(error);
+      }
     }
-  }
-
-  async componentDidMount(){
-    const response = await fetch(`/users`);
-    const { data } = await response.json()
-    this.setState({
-      data: data
-    })
-  }
+    fetchData()
+  }, []);
   
-  render(){
-   return(
+  return(
      <div className='container'>
      {
-      this.state.data.map(element => ( <Registers key={element.id} {...element} /> ) )
+      users.map((element, index) => ( <Registers key={index} {...element} /> ) )
      }
      </div>
    )
-  }
 }
+export default Home

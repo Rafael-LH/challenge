@@ -8,6 +8,12 @@ Instalar dependencias:
 npm install
 ```
 
+Intalar `nodemon` de manera global con
+
+```
+npm install -g nodemon
+```
+
 Ejecutar aplicación
 
 ```

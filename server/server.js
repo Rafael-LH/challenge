@@ -48,7 +48,6 @@ app.get('/users/:name/:namerepo', async (req, res) => {
     status: 200,
     data: response.data,
   });
-
 });
 
 app.listen(PORT);
