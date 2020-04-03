@@ -13,15 +13,25 @@ app.get('/', (req, res) => {
 });
 
 app.get('/users', async (req, res) => {
-  const data = await axios({
-      method: 'get',
-      url: 'https://api.github.com/users',
-  })
-  const response = await data;
-  res.status(200).json({
-    status: 200,
-    data: response.data,
-  });
+  try {
+
+    const data = await axios({
+        method: 'get',
+        url: 'https://api.github.com/users',
+    })
+    const response = await data;
+    res.status(200).json({
+      status: 200,
+      data: response.data,
+    });
+    
+  } catch (error) {
+    if(error.response.status == 403){
+      res.status(error.response.status).json({
+        statusText: error.response.data.message
+      })
+    }
+  }
 
 });
 app.get('/users/:name', async (req, res) => {

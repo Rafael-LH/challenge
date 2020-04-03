@@ -1,4 +1,4 @@
-import React, {Component} from 'react'
+import React from 'react'
 
-const ModalCommits = props => <li className='container-commits__list'>{props.commit.message}</li>
+const ModalCommits = ({ message }) => <li className='container-commits__list'>{message}</li>
 export default ModalCommits
