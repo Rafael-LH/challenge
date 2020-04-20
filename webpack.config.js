@@ -9,7 +9,8 @@ module.exports = {
   },
   output:{
    path: path.resolve(__dirname, 'dist'),
-   filename: 'bundle.js'
+   filename: 'bundle.js',
+   publicPath: '/', // Desde aqui partira para hacer la busqueda de mis scripts / css
   },
   devServer:{
    contentBase: path.join(__dirname, '/'),
@@ -21,9 +22,8 @@ module.exports = {
     filename: '[name].css'
    }),
    new HtmlWebpackPlugin({
-    title: 'API GitHub',
-    filename: './index.html',
-    template: path.resolve(__dirname, './index.html'),
+    template: path.resolve(__dirname, './index.html'), //entry
+    filename: './index.html', // output (mi output apunta a dist/ )
   })
   ],
   module:{

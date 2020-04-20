@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 
-const ModalRepositories = props => (
+const Repositories = props => (
  <div className='container-modal-repos__card'>
     <h1>{props.name}</h1>
     <div className='container-modal-repos__info'>
@@ -18,6 +18,6 @@ const ModalRepositories = props => (
     </div>
  </div>
 );
-export default ModalRepositories
+export default Repositories
 
   

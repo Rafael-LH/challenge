@@ -1,6 +1,8 @@
-import React, {useEffect, useState} from 'react'
-import ModalRepositories from './ModalRepositories'
-import ModalCommits from './ModalCommits'
+import React, {useState} from 'react'
+import Repositories from './Repositories'
+import ModalCommits from './Commits'
+import AutorCommits  from './AutorCommits'
+import Modal from './Modal'
 
 const Cards = ( { login, avatar_url, html_url, } ) => {
   const [state, setState] = useState({
@@ -27,7 +29,7 @@ const Cards = ( { login, avatar_url, html_url, } ) => {
     }
   }
 
-  const closeModal = () => {
+  const handleClose = () => {
     setState({
       showRepositories: false,
       showCommits: false,
@@ -60,35 +62,24 @@ const Cards = ( { login, avatar_url, html_url, } ) => {
          <button className='btn-show-repo' onClick={getUrl}>Repositorios</button>
        </div>
        {
-        state.showRepositories && 
-        <div className='container-modal'>
-          <div className='container-modal-repos'> 
-            <button className='btn-close-modal' onClick={closeModal}>X</button>
-            {
-             state.dataRepositories.map(item => ( <ModalRepositories key={item.id} {...item} handleSearch={handleSearch} handleSearch={handleSearch}/> ) )
-            }
-          </div>
-        </div>
-     
+       state.showRepositories &&
+        <Modal isOpen={state.showRepositories} handleClose={handleClose}>
+          {
+            state.dataRepositories.map(item => ( <Repositories key={item.id} {...item} handleSearch={handleSearch} /> ) )
+          }
+        </Modal>
        }
+
        {
         state.showCommits && 
-        <div className='container-modal'>
-          <div className='container-modal-repos content-commits'> 
-            <button className='btn-close-modal' onClick={closeModal}>X</button>
-            <ul className='container-commits'>
-              <li className='container-commits__user'>
-                <p><b>Nombre Autor:</b> {state.dataAuthor.name}</p>              
-                <p><b>Email:</b> {state.dataAuthor.email}</p>              
-              </li>
-              <li>
-                <h1>Historial Commits</h1>
-              </li>
-              {
-                state.dataCommits.map(item => <ModalCommits key={item.sha} {...item.commit} /> )  
-              }
-            </ul>
-          </div>
+          <div className='container-modal__info'> 
+            <Modal handleClose={handleClose} contentCommits >
+              <AutorCommits {...state.dataAuthor}>
+                {
+                  state.dataCommits.map(item => <ModalCommits key={item.sha} {...item.commit} /> )  
+                }
+              </AutorCommits>
+            </Modal>
         </div>
        }
     </div>
